@@ -1,5 +1,4 @@
 function showScreen(screenId) {
-
     const screens = document.querySelectorAll(".screen");
 
     screens.forEach(function(screen) {
@@ -14,10 +13,13 @@ function showScreen(screenId) {
     }
 }
 
-
 function selectCare(option) {
-
     const selected = document.getElementById("care-selected");
+
+    if (!selected) {
+        alert("CarePath error: care-selected was not found.");
+        return;
+    }
 
     selected.style.display = "block";
 
@@ -31,12 +33,14 @@ function selectCare(option) {
             </small>
         </div>
     `;
+
+    selected.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
-
 function requestSupport() {
-
     const message = document.getElementById("support-message");
+
+    if (!message) return;
 
     message.style.display = "block";
 
@@ -48,10 +52,10 @@ function requestSupport() {
     `;
 }
 
-
 function stopCommunication() {
-
     const message = document.getElementById("support-message");
+
+    if (!message) return;
 
     message.style.display = "block";
 
