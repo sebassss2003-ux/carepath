@@ -31,7 +31,7 @@ header,
 }
 
 .demo {
-    font-size: 10px;
+    font-size: 9px;
     font-weight: bold;
     letter-spacing: 1px;
     background: #edf2f2;
@@ -50,13 +50,13 @@ header,
 }
 
 .hero {
-    margin-top: 90px;
+    margin-top: 75px;
 }
 
 .eyebrow {
     font-size: 11px;
     font-weight: bold;
-    letter-spacing: 1.5px;
+    letter-spacing: 1.4px;
     color: #657578;
 }
 
@@ -67,8 +67,8 @@ h1 {
 }
 
 h2 {
-    font-size: 31px;
-    line-height: 1.1;
+    font-size: 30px;
+    line-height: 1.15;
     margin: 18px 0 25px;
 }
 
@@ -80,7 +80,7 @@ h3 {
 .intro,
 .helper {
     color: #536467;
-    font-size: 17px;
+    font-size: 16px;
     line-height: 1.6;
 }
 
@@ -94,6 +94,7 @@ h3 {
 .notice p {
     margin-bottom: 0;
     font-size: 14px;
+    line-height: 1.5;
 }
 
 button {
@@ -107,6 +108,10 @@ button {
     font-size: 16px;
     font-weight: bold;
     cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.9;
 }
 
 .secondary {
@@ -144,8 +149,8 @@ button {
 }
 
 .large {
-    font-size: 20px;
-    line-height: 1.45;
+    font-size: 19px;
+    line-height: 1.5;
 }
 
 .important {
@@ -158,6 +163,23 @@ button {
 .important p {
     margin-bottom: 0;
     font-size: 14px;
+}
+
+.next-action,
+.action-card,
+.support-info {
+    background: #f5f8f8;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 16px;
+}
+
+.next-action p,
+.action-card p {
+    margin-bottom: 0;
+    color: #5d6c6f;
+    font-size: 14px;
+    line-height: 1.5;
 }
 
 .circle {
@@ -217,6 +239,17 @@ button {
     line-height: 1.5;
 }
 
+.small-button {
+    padding: 13px;
+    font-size: 14px;
+    margin-top: 14px;
+}
+
+.small-note {
+    font-size: 12px !important;
+    color: #737f81 !important;
+}
+
 .warning {
     background: #fff4d4;
     padding: 15px;
@@ -265,6 +298,18 @@ button {
 .timeline-item span {
     color: #718083;
     font-size: 13px;
+}
+
+.support-info ul {
+    padding-left: 20px;
+    margin-bottom: 0;
+}
+
+.support-info li {
+    margin-bottom: 8px;
+    color: #5d6c6f;
+    font-size: 14px;
+    line-height: 1.4;
 }
 
 #support-message {
