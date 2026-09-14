@@ -1,4 +1,5 @@
 function showScreen(screenId) {
+
     const screens = document.querySelectorAll(".screen");
 
     screens.forEach(function(screen) {
@@ -13,26 +14,50 @@ function showScreen(screenId) {
     }
 }
 
+
+function selectCare(option) {
+
+    const selected = document.getElementById("care-selected");
+
+    selected.style.display = "block";
+
+    selected.innerHTML = `
+        <div class="selected-care">
+            <strong>Selected pathway:</strong>
+            <p>${option}</p>
+            <small>
+                This is a simulated selection. Confirm eligibility,
+                availability and actual cost with the provider.
+            </small>
+        </div>
+    `;
+}
+
+
 function requestSupport() {
+
     const message = document.getElementById("support-message");
 
     message.style.display = "block";
 
     message.innerHTML = `
         <strong>Support request recorded.</strong>
-        <br>
+        <br><br>
         Demo only — no real contact will be made.
+        You remain in control of what information you share.
     `;
 }
 
+
 function stopCommunication() {
+
     const message = document.getElementById("support-message");
 
     message.style.display = "block";
 
     message.innerHTML = `
-        <strong>Communication stopped.</strong>
-        <br>
+        <strong>Support not requested.</strong>
+        <br><br>
         You remain in control of your communication preferences.
     `;
 }
