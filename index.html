@@ -9,385 +9,448 @@
 
 <body>
 
-    <div class="app">
+<div class="app">
 
-        <header>
-            <div class="logo">CarePath</div>
-            <div class="demo">DEMO</div>
-        </header>
+    <header>
+        <div class="logo">CarePath</div>
+        <div class="demo">SIMULATED DEMO</div>
+    </header>
 
-        <!-- WELCOME -->
-        <section id="home" class="screen active">
+    <!-- WELCOME -->
+    <section id="home" class="screen active">
 
-            <div class="hero">
+        <div class="hero">
 
-                <p class="eyebrow">YOUR HEALTH JOURNEY</p>
+            <p class="eyebrow">CARE AFTER A MEDICAL RESULT</p>
 
-                <h1>
-                    From a result<br>
-                    to what's next.
-                </h1>
+            <h1>
+                Know your next step.
+            </h1>
 
-                <p class="intro">
-                    CarePath helps you understand and organize
-                    the next step after a medical screening result.
-                </p>
-
-                <div class="notice">
-                    <strong>Demo only</strong>
-                    <p>
-                        This prototype uses simulated health information.
-                    </p>
-                </div>
-
-                <button onclick="showScreen('result')">
-                    Start my journey →
-                </button>
-
-            </div>
-
-        </section>
-
-        <!-- RESULT -->
-        <section id="result" class="screen">
-
-            <div class="topbar">
-                <button class="back" onclick="showScreen('home')">←</button>
-                <span>1 / 5</span>
-            </div>
-
-            <p class="eyebrow">YOUR RESULT</p>
-
-            <h2>
-                Abnormal cervical screening result
-            </h2>
-
-            <div class="card">
-
-                <div class="label">
-                    SIMULATED RESULT
-                </div>
-
-                <p class="large">
-                    Your screening found changes that need
-                    follow-up.
-                </p>
-
-                <div class="important">
-
-                    <strong>
-                        This does not mean you have cancer.
-                    </strong>
-
-                    <p>
-                        A screening result can show that more
-                        evaluation is needed.
-                    </p>
-
-                </div>
-
-            </div>
-
-            <p class="helper">
-                The next step should come from your healthcare
-                provider.
+            <p class="intro">
+                CarePath helps you organize the next step after a
+                medical screening result provided by your healthcare professional.
             </p>
 
-            <button onclick="showScreen('next')">
-                See my next step →
-            </button>
-
-        </section>
-
-        <!-- NEXT STEP -->
-        <section id="next" class="screen">
-
-            <div class="topbar">
-                <button class="back" onclick="showScreen('result')">←</button>
-                <span>2 / 5</span>
+            <div class="notice">
+                <strong>Simulation only</strong>
+                <p>
+                    All health information, providers and prices in this prototype are fictional.
+                </p>
             </div>
 
-            <p class="eyebrow">WHAT'S NEXT</p>
+            <button onclick="showScreen('result')">
+                Start my journey →
+            </button>
 
-            <h2>
-                Your provider-defined next step
-            </h2>
+        </div>
 
-            <div class="card">
+    </section>
 
-                <div class="circle">
+
+    <!-- RESULT -->
+    <section id="result" class="screen">
+
+        <div class="topbar">
+            <button class="back" onclick="showScreen('home')">←</button>
+            <span>1 / 5</span>
+        </div>
+
+        <p class="eyebrow">YOUR SCREENING RESULT</p>
+
+        <h2>
+            Your cervical screening result needs follow-up
+        </h2>
+
+        <div class="card">
+
+            <div class="label">
+                SIMULATED RESULT
+            </div>
+
+            <p class="large">
+                Your healthcare provider gave you an abnormal screening result.
+            </p>
+
+            <div class="important">
+
+                <strong>
+                    An abnormal result does not mean you have cancer.
+                </strong>
+
+                <p>
+                    It means your provider wants you to have another medical check.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="next-action">
+
+            <strong>What matters now</strong>
+
+            <p>
+                Your provider has already defined the next medical step.
+                CarePath helps you understand and organize it.
+            </p>
+
+        </div>
+
+        <button onclick="showScreen('next')">
+            See my next step →
+        </button>
+
+    </section>
+
+
+    <!-- NEXT STEP -->
+    <section id="next" class="screen">
+
+        <div class="topbar">
+            <button class="back" onclick="showScreen('result')">←</button>
+            <span>2 / 5</span>
+        </div>
+
+        <p class="eyebrow">YOUR NEXT STEP</p>
+
+        <h2>
+            Your provider recommends a colposcopy
+        </h2>
+
+        <div class="card">
+
+            <div class="circle">
+                ✓
+            </div>
+
+            <h3>
+                Colposcopy
+            </h3>
+
+            <p>
+                A colposcopy is a follow-up examination.
+                A healthcare professional looks more closely
+                at the cervix.
+            </p>
+
+            <div class="definition">
+
+                <strong>
+                    Why am I seeing this?
+                </strong>
+
+                <p>
+                    In this simulation, your healthcare provider
+                    has already selected this as your next step.
+                    CarePath is not making this medical decision.
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="action-card">
+
+            <strong>Your action</strong>
+
+            <p>
+                Find a provider or facility where you can complete
+                the colposcopy, then add the step to your care plan.
+            </p>
+
+        </div>
+
+        <div class="disclaimer">
+            CarePath does not diagnose cancer or recommend medical treatment.
+            It only organizes information already provided by a healthcare professional.
+        </div>
+
+        <button onclick="showScreen('options')">
+            Find where to go →
+        </button>
+
+        <button class="secondary" onclick="showScreen('support')">
+            I need human help
+        </button>
+
+    </section>
+
+
+    <!-- CARE OPTIONS -->
+    <section id="options" class="screen">
+
+        <div class="topbar">
+            <button class="back" onclick="showScreen('next')">←</button>
+            <span>3 / 5</span>
+        </div>
+
+        <p class="eyebrow">WHERE TO GO</p>
+
+        <h2>
+            Choose a care pathway
+        </h2>
+
+        <p class="helper">
+            These are simulated options. Availability and prices must always
+            be confirmed with the healthcare provider.
+        </p>
+
+        <div class="option">
+
+            <div class="option-title">
+
+                <h3>
+                    Public care
+                </h3>
+
+                <span>
+                    SIMULATED
+                </span>
+
+            </div>
+
+            <p>
+                A public healthcare facility may be an option depending
+                on your eligibility and local availability.
+            </p>
+
+            <strong>
+                Cost: Confirm with provider
+            </strong>
+
+            <button class="small-button" onclick="selectCare('Public care')">
+                Choose public care
+            </button>
+
+        </div>
+
+
+        <div class="option">
+
+            <div class="option-title">
+
+                <h3>
+                    Private care
+                </h3>
+
+                <span>
+                    SIMULATED
+                </span>
+
+            </div>
+
+            <p>
+                A private provider may offer the procedure,
+                depending on availability.
+            </p>
+
+            <strong>
+                Example only: MXN $1,200
+            </strong>
+
+            <p class="small-note">
+                This is NOT a quote or guaranteed price.
+                Ask the provider about the full cost before booking.
+            </p>
+
+            <button class="small-button" onclick="selectCare('Private care')">
+                Choose private care
+            </button>
+
+        </div>
+
+        <div id="care-selected"></div>
+
+        <div class="warning">
+
+            <strong>
+                Important
+            </strong>
+
+            <p>
+                CarePath does not invent availability or prices.
+                Confirm the actual cost, eligibility and appointment
+                availability with the provider.
+            </p>
+
+        </div>
+
+        <button onclick="showScreen('plan')">
+            Continue to my care plan →
+        </button>
+
+    </section>
+
+
+    <!-- CARE PLAN -->
+    <section id="plan" class="screen">
+
+        <div class="topbar">
+            <button class="back" onclick="showScreen('options')">←</button>
+            <span>4 / 5</span>
+        </div>
+
+        <p class="eyebrow">MY CARE PLAN</p>
+
+        <h2>
+            Keep moving forward.
+        </h2>
+
+        <p class="helper">
+            Your goal is to complete the provider-defined next step,
+            not just read about it.
+        </p>
+
+        <div class="timeline">
+
+            <div class="timeline-item done">
+
+                <div class="timeline-circle">
                     ✓
                 </div>
 
-                <h3>
-                    Colposcopy
-                </h3>
-
-                <p>
-                    In this simulated case, your healthcare
-                    provider has defined a colposcopy as the
-                    next follow-up step.
-                </p>
-
-                <div class="definition">
-
+                <div>
                     <strong>
-                        What is it?
+                        Screening result received
                     </strong>
 
-                    <p>
-                        A follow-up examination that allows a
-                        healthcare provider to look more closely
-                        at the cervix.
-                    </p>
-
+                    <span>
+                        Completed
+                    </span>
                 </div>
 
             </div>
 
-            <div class="disclaimer">
-                CarePath does not diagnose or make medical
-                decisions. It organizes information already
-                provided by a healthcare provider.
-            </div>
 
-            <button onclick="showScreen('options')">
-                See care options →
-            </button>
+            <div class="timeline-item done">
 
-            <button class="secondary" onclick="showScreen('support')">
-                I need help
-            </button>
+                <div class="timeline-circle">
+                    ✓
+                </div>
 
-        </section>
-
-        <!-- CARE OPTIONS -->
-        <section id="options" class="screen">
-
-            <div class="topbar">
-                <button class="back" onclick="showScreen('next')">←</button>
-                <span>3 / 5</span>
-            </div>
-
-            <p class="eyebrow">CARE OPTIONS</p>
-
-            <h2>
-                Choose your pathway
-            </h2>
-
-            <div class="option">
-
-                <div class="option-title">
-
-                    <h3>
-                        Public care
-                    </h3>
+                <div>
+                    <strong>
+                        Next step identified
+                    </strong>
 
                     <span>
-                        SIMULATED
+                        Colposcopy
                     </span>
-
                 </div>
-
-                <strong>
-                    Cost: Verify with provider
-                </strong>
-
-                <p>
-                    Check eligibility, availability and next
-                    steps with your provider.
-                </p>
 
             </div>
 
-            <div class="option">
 
-                <div class="option-title">
+            <div class="timeline-item">
 
-                    <h3>
-                        Private care
-                    </h3>
+                <div class="timeline-circle">
+                    3
+                </div>
+
+                <div>
+                    <strong>
+                        Find a provider
+                    </strong>
 
                     <span>
-                        SIMULATED
+                        Your next action
                     </span>
-
-                </div>
-
-                <strong>
-                    Example: MXN $1,200
-                </strong>
-
-                <p>
-                    Example price only. Actual prices must be
-                    confirmed with the provider.
-                </p>
-
-            </div>
-
-            <div class="warning">
-
-                <strong>
-                    Before you choose
-                </strong>
-
-                <p>
-                    CarePath does not guarantee prices,
-                    availability or appointments.
-                </p>
-
-            </div>
-
-            <button onclick="showScreen('plan')">
-                Add to my care plan →
-            </button>
-
-        </section>
-
-        <!-- CARE PLAN -->
-        <section id="plan" class="screen">
-
-            <div class="topbar">
-                <button class="back" onclick="showScreen('options')">←</button>
-                <span>4 / 5</span>
-            </div>
-
-            <p class="eyebrow">
-                MY CARE PLAN
-            </p>
-
-            <h2>
-                Keep moving forward.
-            </h2>
-
-            <p class="helper">
-                The goal is not only to understand the result.
-                It is to complete the next step.
-            </p>
-
-            <div class="timeline">
-
-                <div class="timeline-item done">
-
-                    <div class="timeline-circle">
-                        ✓
-                    </div>
-
-                    <div>
-                        <strong>
-                            Result received
-                        </strong>
-
-                        <span>
-                            Completed
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="timeline-item done">
-
-                    <div class="timeline-circle">
-                        ✓
-                    </div>
-
-                    <div>
-                        <strong>
-                            Next step identified
-                        </strong>
-
-                        <span>
-                            Colposcopy
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <div class="timeline-circle">
-                        3
-                    </div>
-
-                    <div>
-                        <strong>
-                            Appointment
-                        </strong>
-
-                        <span>
-                            Not completed
-                        </span>
-                    </div>
-
-                </div>
-
-                <div class="timeline-item">
-
-                    <div class="timeline-circle">
-                        4
-                    </div>
-
-                    <div>
-                        <strong>
-                            Follow-up completed
-                        </strong>
-
-                        <span>
-                            Not completed
-                        </span>
-                    </div>
-
                 </div>
 
             </div>
 
-            <button onclick="showScreen('support')">
-                Need human help →
-            </button>
 
-        </section>
+            <div class="timeline-item">
 
-        <!-- HUMAN SUPPORT -->
-        <section id="support" class="screen">
+                <div class="timeline-circle">
+                    4
+                </div>
 
-            <div class="topbar">
-                <button class="back" onclick="showScreen('plan')">←</button>
-                <span>5 / 5</span>
+                <div>
+                    <strong>
+                        Complete the appointment
+                    </strong>
+
+                    <span>
+                        Not completed
+                    </span>
+                </div>
+
             </div>
 
-            <p class="eyebrow">
-                HUMAN SUPPORT
+        </div>
+
+        <div class="action-card">
+
+            <strong>Need help completing the next step?</strong>
+
+            <p>
+                You can request support from a human navigator.
             </p>
 
-            <h2>
-                You don't have to figure it out alone.
-            </h2>
+        </div>
 
-            <p class="intro">
-                Healthcare systems can be confusing. A human
-                navigator can help you understand your next step.
-            </p>
+        <button onclick="showScreen('support')">
+            Get human support →
+        </button>
 
-            <div id="support-message"></div>
+    </section>
 
-            <button onclick="requestSupport()">
-                Request human support
-            </button>
 
-            <button class="secondary" onclick="stopCommunication()">
-                Stop communication
-            </button>
+    <!-- HUMAN SUPPORT -->
+    <section id="support" class="screen">
 
-            <p class="privacy">
-                You remain in control of your communication
-                preferences.
-            </p>
+        <div class="topbar">
+            <button class="back" onclick="showScreen('plan')">←</button>
+            <span>5 / 5</span>
+        </div>
 
-        </section>
+        <p class="eyebrow">HUMAN SUPPORT</p>
 
-    </div>
+        <h2>
+            Get help from a human.
+        </h2>
 
-    <script src="script.js"></script>
+        <p class="intro">
+            A human navigator can help explain the process
+            and help you understand your next step.
+        </p>
+
+        <div class="support-info">
+
+            <strong>
+                Before you request support
+            </strong>
+
+            <ul>
+                <li>No medical diagnosis is provided.</li>
+                <li>You decide what information to share.</li>
+                <li>Your communication preferences remain under your control.</li>
+                <li>This prototype does not contact a real person.</li>
+            </ul>
+
+        </div>
+
+        <div id="support-message"></div>
+
+        <button onclick="requestSupport()">
+            Request human support
+        </button>
+
+        <button class="secondary" onclick="stopCommunication()">
+            I don't want support
+        </button>
+
+        <p class="privacy">
+            Your information should never be shared without your permission.
+        </p>
+
+    </section>
+
+</div>
+
+<script src="script.js"></script>
 
 </body>
 </html>
