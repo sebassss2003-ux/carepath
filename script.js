@@ -1,67 +1,105 @@
+
+let selectedPath = "";
+let currentInstruction = "";
+
 function showScreen(screenId) {
-    const screens = document.querySelectorAll(".screen");
+  const screens = document.querySelectorAll(".screen");
 
-    screens.forEach(function(screen) {
-        screen.classList.remove("active");
-    });
+  screens.forEach(screen => {
+    screen.classList.remove("active");
+  });
 
-    const selectedScreen = document.getElementById(screenId);
+  const selectedScreen = document.getElementById(screenId);
 
-    if (selectedScreen) {
-        selectedScreen.classList.add("active");
-        window.scrollTo(0, 0);
-    }
+  if (selectedScreen) {
+    selectedScreen.classList.add("active");
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }
 }
 
-function selectCare(option) {
-    const selected = document.getElementById("care-selected");
+function organizeInstruction() {
+  const input = document.getElementById("instruction");
+  const error = document.getElementById("inputError");
 
-    if (!selected) {
-        alert("CarePath error: care-selected was not found.");
-        return;
-    }
+  const instruction = input.value.trim();
 
-    selected.style.display = "block";
+  error.textContent = "";
 
-    selected.innerHTML = `
-        <div class="selected-care">
-            <strong>Selected pathway:</strong>
-            <p>${option}</p>
-            <small>
-                This is a simulated selection. Confirm eligibility,
-                availability and actual cost with the provider.
-            </small>
-        </div>
-    `;
+  if (instruction.length < 10) {
+    error.textContent = "Escribe una instrucción de al menos 10 caracteres.";
+    input.focus();
+    return;
+  }
 
-    selected.scrollIntoView({ behavior: "smooth", block: "center" });
+  if (instruction.length > 500) {
+    error.textContent = "La instrucción no puede superar 500 caracteres.";
+    input.focus();
+    return;
+  }
+
+  currentInstruction = instruction;
+
+  document.getElementById("instructionOutput").textContent =
+    currentInstruction;
+
+  showScreen("next");
 }
 
-function requestSupport() {
-    const message = document.getElementById("support-message");
+function selectPath(path) {
+  selectedPath = path;
 
-    if (!message) return;
+  document.getElementById("pathError").textContent = "";
 
-    message.style.display = "block";
+  document.querySelectorAll(".option").forEach(option => {
+    option.style.borderColor = "";
+    option.style.background = "";
+  });
 
-    message.innerHTML = `
-        <strong>Support request recorded.</strong>
-        <br><br>
-        Demo only — no real contact will be made.
-        You remain in control of what information you share.
-    `;
+  const selectedButton = event.currentTarget;
+  selectedButton.style.borderColor = "#176b68";
+  selectedButton.style.background = "#eaf3f2";
 }
 
-function stopCommunication() {
-    const message = document.getElementById("support-message");
+function continueToPlan() {
+  const error = document.getElementById("pathError");
 
-    if (!message) return;
+  if (!selectedPath) {
+    error.textContent = "Selecciona una ruta de atención para continuar.";
+    return;
+  }
 
-    message.style.display = "block";
+  error.textContent = "";
 
-    message.innerHTML = `
-        <strong>Support not requested.</strong>
-        <br><br>
-        You remain in control of your communication preferences.
-    `;
+  document.getElementById("selectedPath").textContent = selectedPath;
+  document.getElementById("planInstruction").textContent =
+    currentInstruction;
+
+  showScreen("plan");
+}
+
+function savePlan() {
+  const notes = document.getElementById("notes").value.trim();
+  const message = document.getElementById("saveMessage");
+
+  if (notes.length > 500) {
+    message.textContent = "Tus notas no pueden superar 500 caracteres.";
+    return;
+  }
+
+  const plan = {
+    instruction: currentInstruction,
+    pathway: selectedPath,
+    notes: notes,
+    savedAt: new Date().toISOString()
+  };
+
+  try {
+    localStorage.setItem("carepath_demo_plan", JSON.stringify(plan));
+
+    message.textContent =
+      "Tu plan se guardó en este navegador. Esta demostración no envía información a un servidor.";
+  } catch (error) {
+    message.textContent =
+      "No fue posible guardar el plan en este navegador.";
+  }
 }
