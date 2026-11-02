@@ -1,368 +1,124 @@
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CarePath</title>
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="CarePath te ayuda a organizar tus siguientes pasos después de recibir un resultado médico de tu profesional de salud.">
+  <title>CarePath | Tu siguiente paso, con claridad</title>
+  <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
+  <header class="header">
+    <a href="#" class="logo" onclick="showScreen('welcome')">CarePath<span>+</span></a>
+    <span class="demo-label">DEMO SIMULADA</span>
+  </header>
 
-<div class="app">
-
-    <header>
-        <div class="logo">CarePath</div>
-        <div class="demo">SIMULATED DEMO</div>
-    </header>
-
-    <!-- WELCOME -->
-    <section id="home" class="screen active">
-        <div class="hero">
-
-            <p class="eyebrow">CARE AFTER A MEDICAL RESULT</p>
-
-            <h1>Know your next step.</h1>
-
-            <p class="intro">
-                CarePath helps you organize the next step after a medical
-                screening result provided by your healthcare professional.
-            </p>
-
-            <div class="notice">
-                <strong>Simulation only</strong>
-                <p>
-                    All health information, providers and prices in this
-                    prototype are fictional.
-                </p>
-            </div>
-
-            <button onclick="showScreen('result')">
-                Start my journey →
-            </button>
-
-        </div>
+  <main class="container">
+    <section id="welcome" class="screen active">
+      <span class="eyebrow">ACOMPAÑAMIENTO DESPUÉS DE UN RESULTADO</span>
+      <h1>Tu siguiente paso, con más claridad.</h1>
+      <p class="intro">Recibir un resultado médico puede generar dudas. CarePath te ayuda a organizar la información que ya recibiste de tu profesional de salud y preparar lo que sigue.</p>
+      <div class="notice">
+        <strong>Antes de comenzar</strong>
+        <p>CarePath no diagnostica, interpreta resultados ni recomienda tratamientos. La información de este prototipo es ficticia.</p>
+      </div>
+      <button class="primary" onclick="showScreen('result')">Comenzar →</button>
     </section>
 
-
-    <!-- RESULT -->
     <section id="result" class="screen">
-
-        <div class="topbar">
-            <button class="back" onclick="showScreen('home')">←</button>
-            <span>1 / 5</span>
-        </div>
-
-        <p class="eyebrow">YOUR SCREENING RESULT</p>
-
-        <h2>Your cervical screening result needs follow-up</h2>
-
-        <div class="card">
-
-            <div class="label">SIMULATED RESULT</div>
-
-            <p class="large">
-                Your healthcare provider gave you an abnormal screening result.
-            </p>
-
-            <div class="important">
-                <strong>
-                    An abnormal result does not mean you have cancer.
-                </strong>
-
-                <p>
-                    It means your provider wants you to have another medical check.
-                </p>
-            </div>
-
-        </div>
-
-        <div class="next-action">
-            <strong>What matters now</strong>
-
-            <p>
-                Your provider has already defined the next medical step.
-                CarePath helps you understand and organize it.
-            </p>
-        </div>
-
-        <button onclick="showScreen('next')">
-            See my next step →
-        </button>
-
+      <button class="back" onclick="showScreen('welcome')">← Volver</button>
+      <span class="eyebrow">PASO 1 · TU INFORMACIÓN</span>
+      <h2>¿Qué te indicó tu profesional de salud?</h2>
+      <p class="intro">Escribe la instrucción de seguimiento que ya recibiste. No introduzcas datos personales ni información identificable.</p>
+      <label for="instruction">Instrucción recibida</label>
+      <textarea id="instruction" maxlength="500" placeholder="Ejemplo ficticio: Mi profesional me indicó programar una consulta de seguimiento."></textarea>
+      <p class="hint">Máximo 500 caracteres. No compartas nombres, números de expediente ni datos privados.</p>
+      <button class="primary" onclick="organizeInstruction()">Organizar mi siguiente paso →</button>
+      <p id="inputError" class="error" role="alert"></p>
     </section>
 
-
-    <!-- NEXT STEP -->
     <section id="next" class="screen">
-
-        <div class="topbar">
-            <button class="back" onclick="showScreen('result')">←</button>
-            <span>2 / 5</span>
-        </div>
-
-        <p class="eyebrow">YOUR NEXT STEP</p>
-
-        <h2>Your provider recommends a colposcopy</h2>
-
-        <div class="card">
-
-            <div class="circle">✓</div>
-
-            <h3>Colposcopy</h3>
-
-            <p>
-                A colposcopy is a follow-up examination.
-                A healthcare professional looks more closely
-                at the cervix.
-            </p>
-
-            <div class="definition">
-
-                <strong>Why am I seeing this?</strong>
-
-                <p>
-                    In this simulation, your healthcare provider has already
-                    selected this as your next step. CarePath is not making
-                    this medical decision.
-                </p>
-
-            </div>
-
-        </div>
-
-        <div class="action-card">
-
-            <strong>Your action</strong>
-
-            <p>
-                Find a provider or facility where you can complete the
-                colposcopy, then add the step to your care plan.
-            </p>
-
-        </div>
-
-        <div class="disclaimer">
-            CarePath does not diagnose cancer or recommend medical treatment.
-            It only organizes information already provided by a healthcare professional.
-        </div>
-
-        <button onclick="showScreen('options')">
-            Find where to go →
-        </button>
-
-        <button class="secondary" onclick="showScreen('support')">
-            I need human help
-        </button>
-
+      <button class="back" onclick="showScreen('result')">← Volver</button>
+      <span class="eyebrow">PASO 2 · ORGANIZA TU SIGUIENTE PASO</span>
+      <h2>Esto es lo que registraste</h2>
+      <div class="card">
+        <span class="tag">INFORMACIÓN PROPORCIONADA POR TI</span>
+        <p id="instructionOutput"></p>
+      </div>
+      <div class="notice">
+        <strong>Importante</strong>
+        <p>CarePath no determina el significado clínico de esta instrucción. Confirma con tu profesional qué debes hacer y en qué plazo.</p>
+      </div>
+      <h3>Preguntas que puedes preparar</h3>
+      <ul>
+        <li>¿Cuál es el objetivo de este seguimiento?</li>
+        <li>¿En qué plazo debo realizarlo?</li>
+        <li>¿Qué documentos necesito?</li>
+        <li>¿Cuál es el costo y qué opciones tengo?</li>
+      </ul>
+      <button class="primary" onclick="showScreen('options')">Explorar opciones →</button>
     </section>
 
-
-    <!-- CARE OPTIONS -->
     <section id="options" class="screen">
-
-        <div class="topbar">
-            <button class="back" onclick="showScreen('next')">←</button>
-            <span>3 / 5</span>
-        </div>
-
-        <p class="eyebrow">WHERE TO GO</p>
-
-        <h2>Choose a care pathway</h2>
-
-        <p class="helper">
-            These are simulated options. Availability and prices must always
-            be confirmed with the healthcare provider.
-        </p>
-
-        <div class="option">
-
-            <div class="option-title">
-                <h3>Public care</h3>
-                <span>SIMULATED</span>
-            </div>
-
-            <p>
-                A public healthcare facility may be an option depending
-                on your eligibility and local availability.
-            </p>
-
-            <strong>Cost: Confirm with provider</strong>
-
-            <button class="small-button" onclick="selectCare('Public care')">
-                Choose public care
-            </button>
-
-        </div>
-
-
-        <div class="option">
-
-            <div class="option-title">
-                <h3>Private care</h3>
-                <span>SIMULATED</span>
-            </div>
-
-            <p>
-                A private provider may offer the procedure,
-                depending on availability.
-            </p>
-
-            <strong>Example only: MXN $1,200</strong>
-
-            <p class="small-note">
-                This is NOT a quote or guaranteed price.
-                Ask the provider about the full cost before booking.
-            </p>
-
-            <button class="small-button" onclick="selectCare('Private care')">
-                Choose private care
-            </button>
-
-        </div>
-
-        <div id="care-selected"></div>
-
-        <div class="warning">
-            <strong>Important</strong>
-
-            <p>
-                CarePath does not invent availability or prices.
-                Confirm the actual cost, eligibility and appointment
-                availability with the provider.
-            </p>
-        </div>
-
-        <button onclick="showScreen('plan')">
-            Continue to my care plan →
-        </button>
-
+      <button class="back" onclick="showScreen('next')">← Volver</button>
+      <span class="eyebrow">PASO 3 · OPCIONES DE ATENCIÓN</span>
+      <h2>Explora tu ruta de atención</h2>
+      <p class="intro">Selecciona una ruta para organizar las preguntas que necesitas resolver.</p>
+      <button class="option" onclick="selectPath('Atención pública')">
+        <strong>Atención pública</strong>
+        <span>Consulta requisitos, elegibilidad, disponibilidad y tiempos directamente con la institución.</span>
+      </button>
+      <button class="option" onclick="selectPath('Atención privada')">
+        <strong>Atención privada</strong>
+        <span>Pregunta por costos, disponibilidad, cobertura y servicios incluidos.</span>
+      </button>
+      <p id="pathError" class="error" role="alert"></p>
+      <button class="primary" onclick="continueToPlan()">Continuar a mi plan →</button>
+      <p class="hint">Estas opciones son orientativas. No representan instituciones, precios ni citas verificadas.</p>
     </section>
 
-
-    <!-- CARE PLAN -->
     <section id="plan" class="screen">
-
-        <div class="topbar">
-            <button class="back" onclick="showScreen('options')">←</button>
-            <span>4 / 5</span>
-        </div>
-
-        <p class="eyebrow">MY CARE PLAN</p>
-
-        <h2>Keep moving forward.</h2>
-
-        <p class="helper">
-            Your goal is to complete the provider-defined next step,
-            not just read about it.
-        </p>
-
-        <div class="timeline">
-
-            <div class="timeline-item done">
-                <div class="timeline-circle">✓</div>
-
-                <div>
-                    <strong>Screening result received</strong>
-                    <span>Completed</span>
-                </div>
-            </div>
-
-            <div class="timeline-item done">
-                <div class="timeline-circle">✓</div>
-
-                <div>
-                    <strong>Next step identified</strong>
-                    <span>Colposcopy</span>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-circle">3</div>
-
-                <div>
-                    <strong>Find a provider</strong>
-                    <span>Your next action</span>
-                </div>
-            </div>
-
-            <div class="timeline-item">
-                <div class="timeline-circle">4</div>
-
-                <div>
-                    <strong>Complete the appointment</strong>
-                    <span>Not completed</span>
-                </div>
-            </div>
-
-        </div>
-
-        <div class="action-card">
-
-            <strong>Need help completing the next step?</strong>
-
-            <p>
-                You can request support from a human navigator.
-            </p>
-
-        </div>
-
-        <button onclick="showScreen('support')">
-            Get human support →
-        </button>
-
+      <button class="back" onclick="showScreen('options')">← Volver</button>
+      <span class="eyebrow">PASO 4 · TU PLAN</span>
+      <h2>Tus siguientes pasos</h2>
+      <div class="card">
+        <p><strong>1.</strong> Contactar a tu profesional o institución.</p>
+        <p><strong>2.</strong> Confirmar el seguimiento indicado.</p>
+        <p><strong>3.</strong> Preguntar por costos y documentos.</p>
+        <p><strong>4.</strong> Registrar los detalles cuando tengas confirmación.</p>
+        <hr>
+        <p><strong>Ruta seleccionada:</strong> <span id="selectedPath"></span></p>
+        <p><strong>Instrucción:</strong> <span id="planInstruction"></span></p>
+      </div>
+      <label for="notes">Notas personales (opcional)</label>
+      <textarea id="notes" maxlength="500" placeholder="Escribe preguntas que quieras recordar..."></textarea>
+      <button class="primary" onclick="savePlan()">Guardar mi plan en este dispositivo</button>
+      <p id="saveMessage" class="success" role="status"></p>
+      <button class="secondary" onclick="showScreen('support')">Opciones de apoyo humano →</button>
     </section>
 
-
-    <!-- HUMAN SUPPORT -->
     <section id="support" class="screen">
-
-        <div class="topbar">
-            <button class="back" onclick="showScreen('plan')">←</button>
-            <span>5 / 5</span>
-        </div>
-
-        <p class="eyebrow">HUMAN SUPPORT</p>
-
-        <h2>Get help from a human.</h2>
-
-        <p class="intro">
-            A human navigator can help explain the process
-            and help you understand your next step.
-        </p>
-
-        <div class="support-info">
-
-            <strong>Before you request support</strong>
-
-            <ul>
-                <li>No medical diagnosis is provided.</li>
-                <li>You decide what information to share.</li>
-                <li>Your communication preferences remain under your control.</li>
-                <li>This prototype does not contact a real person.</li>
-            </ul>
-
-        </div>
-
-        <div id="support-message"></div>
-
-        <button onclick="requestSupport()">
-            Request human support
-        </button>
-
-        <button class="secondary" onclick="stopCommunication()">
-            I don't want support
-        </button>
-
-        <p class="privacy">
-            Your information should never be shared without your permission.
-        </p>
-
+      <button class="back" onclick="showScreen('plan')">← Volver</button>
+      <span class="eyebrow">PASO 5 · APOYO HUMANO</span>
+      <h2>No tienes que organizarlo todo solo.</h2>
+      <p class="intro">Puedes preparar una conversación con tu profesional de salud o con una persona de confianza.</p>
+      <div class="card">
+        <strong>Antes de pedir apoyo, puedes:</strong>
+        <ul>
+          <li>Compartir las preguntas que preparaste.</li>
+          <li>Solicitar que te expliquen los siguientes pasos.</li>
+          <li>Preguntar por alternativas de atención y costos.</li>
+        </ul>
+      </div>
+      <p class="notice">Esta demostración no envía mensajes ni contacta a instituciones o profesionales.</p>
+      <button class="primary" onclick="showScreen('welcome')">Volver al inicio</button>
     </section>
+  </main>
 
-</div>
-
-<script src="script.js"></script>
-
+  <footer>
+    CarePath organiza información proporcionada por el usuario o su profesional de salud. No diagnostica, interpreta resultados, prescribe tratamientos ni sustituye la atención profesional.
+  </footer>
+  <script src="script.js"></script>
 </body>
 </html>
