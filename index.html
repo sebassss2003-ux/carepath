@@ -10,11 +10,12 @@
 </head>
 <body>
   <header class="header">
-    <a href="#" class="logo" onclick="showScreen('welcome')">CarePath<span>+</span></a>
+    <a href="#" class="logo" onclick="showScreen('welcome'); return false;">CarePath<span>+</span></a>
     <span class="demo-label">DEMO SIMULADA</span>
   </header>
 
   <main class="container">
+
     <section id="welcome" class="screen active">
       <span class="eyebrow">ACOMPAÑAMIENTO DESPUÉS DE UN RESULTADO</span>
       <h1>Tu siguiente paso, con más claridad.</h1>
@@ -65,14 +66,17 @@
       <span class="eyebrow">PASO 3 · OPCIONES DE ATENCIÓN</span>
       <h2>Explora tu ruta de atención</h2>
       <p class="intro">Selecciona una ruta para organizar las preguntas que necesitas resolver.</p>
-      <button class="option" onclick="selectPath('Atención pública')">
+
+      <button class="option" onclick="selectPath('Atención pública', this)">
         <strong>Atención pública</strong>
         <span>Consulta requisitos, elegibilidad, disponibilidad y tiempos directamente con la institución.</span>
       </button>
-      <button class="option" onclick="selectPath('Atención privada')">
+
+      <button class="option" onclick="selectPath('Atención privada', this)">
         <strong>Atención privada</strong>
         <span>Pregunta por costos, disponibilidad, cobertura y servicios incluidos.</span>
       </button>
+
       <p id="pathError" class="error" role="alert"></p>
       <button class="primary" onclick="continueToPlan()">Continuar a mi plan →</button>
       <p class="hint">Estas opciones son orientativas. No representan instituciones, precios ni citas verificadas.</p>
@@ -114,11 +118,13 @@
       <p class="notice">Esta demostración no envía mensajes ni contacta a instituciones o profesionales.</p>
       <button class="primary" onclick="showScreen('welcome')">Volver al inicio</button>
     </section>
+
   </main>
 
   <footer>
     CarePath organiza información proporcionada por el usuario o su profesional de salud. No diagnostica, interpreta resultados, prescribe tratamientos ni sustituye la atención profesional.
   </footer>
+
   <script src="script.js"></script>
 </body>
 </html>
