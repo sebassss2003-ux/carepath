@@ -20,7 +20,6 @@ function showScreen(screenId) {
 function organizeInstruction() {
   const input = document.getElementById("instruction");
   const error = document.getElementById("inputError");
-
   const instruction = input.value.trim();
 
   error.textContent = "";
@@ -45,7 +44,7 @@ function organizeInstruction() {
   showScreen("next");
 }
 
-function selectPath(path) {
+function selectPath(path, selectedButton) {
   selectedPath = path;
 
   document.getElementById("pathError").textContent = "";
@@ -55,7 +54,6 @@ function selectPath(path) {
     option.style.background = "";
   });
 
-  const selectedButton = event.currentTarget;
   selectedButton.style.borderColor = "#176b68";
   selectedButton.style.background = "#eaf3f2";
 }
